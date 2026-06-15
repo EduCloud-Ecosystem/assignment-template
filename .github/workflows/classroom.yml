@@ -1,0 +1,42 @@
+# OPTIONAL -- GitHub Classroom autograder.
+# Quad grades from grading.json, so you only need this file if you ALSO publish
+# this assignment on GitHub Classroom. Keep the two point totals in sync.
+name: Autograding Tests
+'on':
+  - workflow_dispatch
+  - repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+      - uses: actions/checkout@v4
+      - name: unit tests
+        id: tests
+        uses: classroom-resources/autograding-python-grader@v1
+        with:
+          entryPoint: test_*.py
+          timeout: 10
+          max-score: 80
+          setup-command: pip install -r requirements.txt
+      - name: pylint (gate)
+        id: pylint
+        uses: classroom-resources/autograding-command-grader@v1
+        continue-on-error: true
+        with:
+          test-name: pylint
+          timeout: 10
+          max-score: 10
+          setup-command: pip install -r requirements.txt
+          command: pylint ds.py --fail-under=8.0
+      - name: report
+        uses: classroom-resources/autograding-grading-reporter@v1
+        env:
+          TESTS_RESULTS: "${{steps.tests.outputs.result}}"
+          PYLINT_RESULTS: "${{steps.pylint.outputs.result}}"
+        with:
+          runners: tests,pylint
