@@ -1,0 +1,10 @@
+# Third-party packages your assignment needs, one per line. For example:
+#   pandas
+#   scikit-learn
+#   pylint
+#
+# The example skeleton is standard-library only and needs none of these, so it
+# runs on python:3.12-slim with no image build. As soon as you add a package
+# here you must bake it into a grading image (see Dockerfile.grader and the
+# README): grading runs offline (network: none), so packages cannot be
+# pip-installed at grade time.

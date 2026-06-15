@@ -1,0 +1,11 @@
+{
+  "version": "1",
+  "image": "python:3.12-slim",
+  "tests": [
+    { "name": "load_rows reads the CSV",      "run": "python -m unittest -q test_ds.TestAssignment.test_load_rows",  "points": 20 },
+    { "name": "clean_rows drops empty rows",  "run": "python -m unittest -q test_ds.TestAssignment.test_clean_rows", "points": 20 },
+    { "name": "add_field adds a field",       "run": "python -m unittest -q test_ds.TestAssignment.test_add_field",  "points": 20 },
+    { "name": "mean_of computes the average", "run": "python -m unittest -q test_ds.TestAssignment.test_mean_of",    "points": 20 }
+  ],
+  "limits": { "memory_mb": 512, "cpus": 1, "network": "none" }
+}

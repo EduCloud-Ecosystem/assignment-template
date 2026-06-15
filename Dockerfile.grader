@@ -1,0 +1,20 @@
+# Build the image your grading.json "image" points at.
+#
+# Grading runs OFFLINE (network: none), so every package your assignment needs
+# must be installed here -- you cannot pip install at grade time.
+#
+#   docker build -f Dockerfile.grader -t <registry>/<name>-grader:1 .
+#   docker push   <registry>/<name>-grader:1      # only if grading on a remote host
+#
+# Then set "image": "<registry>/<name>-grader:1" in grading.json.
+#
+# The example assignment is standard-library only and runs on python:3.12-slim
+# directly, so you only need this image once you add packages to requirements.txt.
+FROM python:3.12-slim
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install --no-cache-dir -r /tmp/requirements.txt
+
+# Optional tamper-resistance: bake the canonical tests into the image, then have
+# each unit-test command in grading.json copy them over the student's copy first
+# (see the README). Uncomment and rebuild whenever you change the tests.
+# COPY test_ds.py /opt/grader/test_ds.py
