@@ -1,5 +1,12 @@
 # &lt;HW-NN&gt;: &lt;Assignment Title&gt;
 
+
+<!-- educloud-status-badges:start -->
+[![License](https://img.shields.io/github/license/EduCloud-Ecosystem/assignment-template)](https://github.com/EduCloud-Ecosystem/assignment-template/blob/main/LICENSING.md)
+[![Template tests](https://github.com/EduCloud-Ecosystem/assignment-template/actions/workflows/classroom.yml/badge.svg?branch=main)](https://github.com/EduCloud-Ecosystem/assignment-template/actions/workflows/classroom.yml)
+[![Open issues](https://img.shields.io/github/issues/EduCloud-Ecosystem/assignment-template)](https://github.com/EduCloud-Ecosystem/assignment-template/issues)
+<!-- educloud-status-badges:end -->
+
 > **Instructors:** this repo is a *template*. The block directly below explains how
 > to turn it into a real assignment. **Delete everything from here down to the
 > `---` divider before you publish to students** — only the section under the
